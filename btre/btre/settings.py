@@ -12,8 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
-import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +27,7 @@ SECRET_KEY = '3^&0r89&6--uhutxc=n(m9biy^7id&t*0q5_b=*^qw7b2ufqp^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -81,21 +80,18 @@ WSGI_APPLICATION = 'btre.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'btredb',
-#         'USER': 'btredb',
-#         'USER': 'postgres',
-#         'PASSWORD': 'Nskmarketing2020',
-#         'HOST':'localhost'
-#     }
-# }
-
 DATABASES = {
-    'default':dj_database_url.config()
-
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'btredb',
+        'USER': 'btredb',
+        'USER': 'postgres',
+        'PASSWORD': 'Nskmarketing2020',
+        'HOST':'localhost'
+    }
 }
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -138,7 +134,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'btre/static')
 ]
-djnago_heroku.settings(locals())
 # Media Folder Settings
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
